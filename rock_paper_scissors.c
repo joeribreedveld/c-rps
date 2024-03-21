@@ -16,6 +16,35 @@ char *getChoice(int choice) {
   }
 }
 
+// Function to determine winner
+char *getWinner(int userChoice, int computerChoice) {
+  if (userChoice == computerChoice) {
+    return "It's a tie!";
+  } else if ((userChoice == 1 && computerChoice == 3) ||
+             (userChoice == 2 && computerChoice == 1) ||
+             (userChoice == 3 && computerChoice == 2)) {
+    return "You win!";
+  } else {
+    return "Computer wins!";
+  }
+}
+
+// Function to validate user input
+int validateInput(int choice) {
+  if (choice < 1 || choice > 3) {
+    printf("\nInvalid choice. Please try again.\n");
+
+    // Return error
+    return 1;
+  }
+
+  // Return success
+  return 0;
+}
+
+// Function to generate computer choice
+int generateComputerChoice() { return rand() % 3 + 1; }
+
 // Main function
 int main() {
   // Initialize variables
@@ -34,30 +63,20 @@ int main() {
   scanf("%d", &userChoice);
 
   // Validate user input
-  if (userChoice < 1 || userChoice > 3) {
-    printf("\nInvalid choice. Please try again.\n");
-
+  if (validateInput(userChoice)) {
     // Return error
     return 1;
   }
 
   // Generate computer choice
-  computerChoice = rand() % 3 + 1;
+  computerChoice = generateComputerChoice();
 
   // Print user and computer choices
   printf("\nYou chose: %s\n", getChoice(userChoice));
   printf("Computer chose: %s\n", getChoice(computerChoice));
 
   // Determine winner
-  if (userChoice == computerChoice) {
-    printf("\nIt's a tie!\n");
-  } else if ((userChoice == 1 && computerChoice == 3) ||
-             (userChoice == 2 && computerChoice == 1) ||
-             (userChoice == 3 && computerChoice == 2)) {
-    printf("\nYou win!\n");
-  } else {
-    printf("\nComputer wins!\n");
-  }
+  printf("\n%s\n", getWinner(userChoice, computerChoice));
 
   // Return success
   return 0;
