@@ -47,5 +47,16 @@ int main() {
   printf("\nYou chose: %s\n", getChoice(userChoice));
   printf("Computer chose: %s\n", getChoice(computerChoice));
 
+  // Determine winner
+  if (userChoice == computerChoice) {
+    printf("\nIt's a tie!\n");
+  } else if ((userChoice == 1 && computerChoice == 3) ||
+             (userChoice == 2 && computerChoice == 1) ||
+             (userChoice == 3 && computerChoice == 2)) {
+    printf("\nYou win!\n");
+  } else {
+    printf("\nComputer wins!\n");
+  }
+
   return 0;
 }
