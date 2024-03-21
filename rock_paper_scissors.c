@@ -23,7 +23,7 @@ int main() {
   int computerChoice;
 
   // Print welcome message
-  printf("\nWelcome to Rock, Paper, Scissors!\n");
+  printf("Welcome to Rock, Paper, Scissors!\n");
   printf("\nPlease choose one of the following:\n");
   printf("\n1. Rock\n");
   printf("2. Paper\n");
@@ -37,6 +37,7 @@ int main() {
   if (userChoice < 1 || userChoice > 3) {
     printf("\nInvalid choice. Please try again.\n");
 
+    // Return error
     return 1;
   }
 
@@ -58,5 +59,6 @@ int main() {
     printf("\nComputer wins!\n");
   }
 
+  // Return success
   return 0;
 }
